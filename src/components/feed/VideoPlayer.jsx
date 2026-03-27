@@ -11,6 +11,7 @@ import { useHaptics } from '../../hooks/useHaptics.js'
  */
 export const VideoPlayer = forwardRef(({ video, isActive }, ref) => {
   const videoRef = useRef(null)
+  const progressRef = useRef(null)
   const { isMuted, toggleMute } = useAppContext()
   const haptics = useHaptics()
 
@@ -53,8 +54,37 @@ export const VideoPlayer = forwardRef(({ video, isActive }, ref) => {
     const percentage = Math.max(0, Math.min(1, x / width))
     if (videoRef.current && duration > 0) {
       videoRef.current.currentTime = percentage * duration
+      // Instantly sync UI on seek
+      if (progressRef.current) {
+        progressRef.current.style.width = `${percentage * 100}%`
+      }
     }
   }
+
+  // High-performance 60 FPS continuous scrubber update bypassing React lifecycle limits natively
+  useEffect(() => {
+    let animationFrameId;
+    const updateProgress = () => {
+      if (videoRef.current && progressRef.current && duration > 0) {
+        const currentPercent = (videoRef.current.currentTime / duration) * 100;
+        progressRef.current.style.width = `${currentPercent}%`;
+      }
+      animationFrameId = requestAnimationFrame(updateProgress)
+    }
+
+    if (isPlaying) {
+      animationFrameId = requestAnimationFrame(updateProgress)
+    } else {
+      // Force final frame alignment explicitly when paused/ended
+      if (videoRef.current && progressRef.current && duration > 0) {
+        progressRef.current.style.width = `${(videoRef.current.currentTime / Math.max(1, duration)) * 100}%`;
+      }
+    }
+    
+    return () => {
+      cancelAnimationFrame(animationFrameId)
+    }
+  }, [isPlaying, duration])
 
   return (
     <div className="relative w-full h-full bg-black/90">
@@ -94,8 +124,9 @@ export const VideoPlayer = forwardRef(({ video, isActive }, ref) => {
         onClick={(e) => e.stopPropagation()}
       >
         <div 
-          className="h-full bg-toktik-accent transition-all ease-linear relative"
-          style={{ width: `${progressPercent}%`, transitionDuration: '0.1s' }} 
+          ref={progressRef}
+          className="h-full bg-toktik-accent relative"
+          style={{ width: `${progressPercent}%` }} 
         >
           {/* Subtle scrubber thumb */}
           <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full shadow" />

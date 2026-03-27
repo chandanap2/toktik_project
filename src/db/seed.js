@@ -85,7 +85,7 @@ const videos = [
   {
     id: 'v1',
     profileId: 'p1',
-    url: 'https://videos.pexels.com/video-files/3571264/3571264-uhd_1440_2560_30fps.mp4',
+    url: '/videos/1.mp4',
     thumbnailUrl: '',
     description: 'Golden hour magic ✨ The world looks different at this hour',
     tags: ['#goldenhour', '#design', '#calm'],
@@ -100,7 +100,7 @@ const videos = [
   {
     id: 'v2',
     profileId: 'p1',
-    url: 'https://videos.pexels.com/video-files/3015510/3015510-hd_1080_1920_24fps.mp4',
+    url: '/videos/2.mp4',
     thumbnailUrl: '',
     description: 'Studio vibes only. New project loading…',
     tags: ['#studio', '#creative', '#workflow'],
@@ -117,7 +117,7 @@ const videos = [
   {
     id: 'v3',
     profileId: 'p2',
-    url: 'https://videos.pexels.com/video-files/5752729/5752729-hd_1080_1920_25fps.mp4',
+    url: '/videos/3.mp4',
     thumbnailUrl: '',
     description: 'Late night coding sessions hit different when the code finally compiles 🚀',
     tags: ['#coding', '#developer', '#tech'],
@@ -134,7 +134,7 @@ const videos = [
   {
     id: 'v4',
     profileId: 'p3',
-    url: 'https://videos.pexels.com/video-files/4763824/4763824-uhd_1440_2560_24fps.mp4',
+    url: '/videos/4.mp4',
     thumbnailUrl: '',
     description: 'London mornings through my lens. Every frame tells a story 🎥',
     tags: ['#london', '#cinematography', '#filmmaker'],
@@ -149,7 +149,7 @@ const videos = [
   {
     id: 'v5',
     profileId: 'p3',
-    url: 'https://videos.pexels.com/video-files/4434242/4434242-hd_1080_1920_30fps.mp4',
+    url: '/videos/5.mp4',
     thumbnailUrl: '',
     description: 'Behind the scenes of my latest short film. The magic is in the details',
     tags: ['#bts', '#filmmaking', '#creative'],
@@ -162,54 +162,6 @@ const videos = [
     createdAt: '2026-03-19T16:45:00Z',
   },
 
-  // Kai — 2 videos
-  {
-    id: 'v6',
-    profileId: 'p4',
-    url: 'https://videos.pexels.com/video-files/5548025/5548025-hd_1080_1920_25fps.mp4',
-    thumbnailUrl: '',
-    description: 'Morning ritual: breathe, stretch, be present 🍃',
-    tags: ['#mindfulness', '#morning', '#calm'],
-    musicTitle: 'Gentle Stream - Nature Sounds',
-    likes: 12600,
-    comments: 4,
-    shares: 145,
-    bookmarks: 890,
-    duration: 22,
-    createdAt: '2026-03-23T06:00:00Z',
-  },
-  {
-    id: 'v7',
-    profileId: 'p4',
-    url: 'https://videos.pexels.com/video-files/4536050/4536050-hd_1080_1920_25fps.mp4',
-    thumbnailUrl: '',
-    description: 'Tea ceremony — slowing down in a fast world 🍵',
-    tags: ['#tea', '#ritual', '#peaceful'],
-    musicTitle: 'Original Audio - calm.with.kai',
-    likes: 9400,
-    comments: 3,
-    shares: 98,
-    bookmarks: 710,
-    duration: 14,
-    createdAt: '2026-03-17T07:30:00Z',
-  },
-
-  // Mia — 1 video
-  {
-    id: 'v8',
-    profileId: 'p5',
-    url: 'https://videos.pexels.com/video-files/5377700/5377700-hd_1080_1920_25fps.mp4',
-    thumbnailUrl: '',
-    description: 'POV: You finally fix the bug that took 3 hours ☕ this is peak satisfaction',
-    tags: ['#coding', '#developer', '#bugfix'],
-    musicTitle: 'Midnight Code - bytebymia',
-    likes: 5200,
-    comments: 5,
-    shares: 42,
-    bookmarks: 380,
-    duration: 10,
-    createdAt: '2026-03-24T23:45:00Z',
-  },
 ]
 
 // ─────────────────────────────────────────────
@@ -378,107 +330,6 @@ const comments = [
     createdAt: '2026-03-20T08:00:00Z',
   },
 
-  // v6 — Morning ritual (4 comments)
-  {
-    id: 'c20',
-    videoId: 'v6',
-    profileId: 'p1',
-    text: 'This is the energy I needed this morning ☀️',
-    likes: 167,
-    createdAt: '2026-03-23T07:00:00Z',
-  },
-  {
-    id: 'c21',
-    videoId: 'v6',
-    profileId: 'p3',
-    text: 'Kai your content is like therapy. Seriously.',
-    likes: 134,
-    createdAt: '2026-03-23T08:30:00Z',
-  },
-  {
-    id: 'c22',
-    videoId: 'v6',
-    profileId: 'p5',
-    text: 'Trying this tomorrow morning 🙏',
-    likes: 45,
-    createdAt: '2026-03-23T12:00:00Z',
-  },
-  {
-    id: 'c23',
-    videoId: 'v6',
-    profileId: 'p2',
-    text: 'I wish I was this disciplined',
-    likes: 89,
-    createdAt: '2026-03-23T16:00:00Z',
-  },
-
-  // v7 — Tea ceremony (3 comments)
-  {
-    id: 'c24',
-    videoId: 'v7',
-    profileId: 'p3',
-    text: 'Everything about this is so intentional. Beautiful.',
-    likes: 78,
-    createdAt: '2026-03-17T09:00:00Z',
-  },
-  {
-    id: 'c25',
-    videoId: 'v7',
-    profileId: 'p1',
-    text: 'The sound design in this is perfect',
-    likes: 56,
-    createdAt: '2026-03-17T12:00:00Z',
-  },
-  {
-    id: 'c26',
-    videoId: 'v7',
-    profileId: 'p5',
-    text: 'Me scrolling through this while chugging my third coffee 💀',
-    likes: 203,
-    createdAt: '2026-03-17T15:00:00Z',
-  },
-
-  // v8 — Bug fix satisfaction (5 comments)
-  {
-    id: 'c27',
-    videoId: 'v8',
-    profileId: 'p2',
-    text: 'This is too relatable. The emotional rollercoaster of debugging 😂',
-    likes: 234,
-    createdAt: '2026-03-25T00:00:00Z',
-  },
-  {
-    id: 'c28',
-    videoId: 'v8',
-    profileId: 'p1',
-    text: 'Me every single day',
-    likes: 89,
-    createdAt: '2026-03-25T01:00:00Z',
-  },
-  {
-    id: 'c29',
-    videoId: 'v8',
-    profileId: 'p3',
-    text: 'The celebration at the end 😭🎉',
-    likes: 145,
-    createdAt: '2026-03-25T08:00:00Z',
-  },
-  {
-    id: 'c30',
-    videoId: 'v8',
-    profileId: 'p4',
-    text: 'And then you realize you introduced 3 new bugs',
-    likes: 312,
-    createdAt: '2026-03-25T10:00:00Z',
-  },
-  {
-    id: 'c31',
-    videoId: 'v8',
-    profileId: 'p2',
-    text: 'Console.log("it works") → production deployed → gg',
-    likes: 178,
-    createdAt: '2026-03-25T14:00:00Z',
-  },
 ]
 
 // ─────────────────────────────────────────────
@@ -491,6 +342,16 @@ const comments = [
  */
 export async function seedDatabase() {
   try {
+    const isV3 = localStorage.getItem('toktik_v3_cleared')
+    if (!isV3) {
+      console.log('[TokTik] Detected new seed assets. Wiping old database...')
+      await db.profiles.clear()
+      await db.videos.clear()
+      await db.interactions.clear()
+      await db.comments.clear()
+      localStorage.setItem('toktik_v3_cleared', 'true')
+    }
+
     const profileCount = await db.profiles.count()
 
     if (profileCount > 0) {

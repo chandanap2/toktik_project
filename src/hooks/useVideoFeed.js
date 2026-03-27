@@ -42,7 +42,7 @@ export function useVideoFeed(videosLength, setActiveIndex) {
       },
       {
         root: containerRef.current,
-        threshold: 0.8, // Trigger when 80% is visible within the parent container
+        threshold: 0.95, // Trigger strictly when 95% visible to ensure previous video is successfully exited
       }
     )
 
