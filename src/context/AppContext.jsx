@@ -15,7 +15,10 @@ export const useAppContext = () => {
 export function AppProvider({ children }) {
   const { profiles } = useDB()
   const [activeUserId, setActiveUserId] = useState(() => localStorage.getItem('toktik_active_user'))
-  const [isMuted, setIsMuted] = useState(() => localStorage.getItem('toktik_is_muted') === 'true')
+  const [isMuted, setIsMuted] = useState(() => {
+    const stored = localStorage.getItem('toktik_is_muted')
+    return stored !== null ? stored === 'true' : true
+  })
 
   // Listen to changes in localStorage if seed happens async after first render
   useEffect(() => {
