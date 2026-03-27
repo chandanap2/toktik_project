@@ -3,6 +3,8 @@ import { Heart, MessageCircle, Forward, Bookmark, Plus } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { useInteractions } from '../../hooks/useInteractions.js'
 import { useHaptics } from '../../hooks/useHaptics.js'
+import { useLiveQuery } from 'dexie-react-hooks'
+import { useDB } from '../../context/DBContext.jsx'
 import Avatar from '../shared/Avatar.jsx'
 
 /**
@@ -12,6 +14,8 @@ import Avatar from '../shared/Avatar.jsx'
 export function ActionBar({ video, profile, onCommentClick }) {
   const navigate = useNavigate()
   const haptics = useHaptics()
+  const { videos } = useDB()
+  const liveVideo = useLiveQuery(() => videos.getById(video.id), [video.id]) || video
   
   const { 
     isLiked, 
@@ -120,7 +124,7 @@ export function ActionBar({ video, profile, onCommentClick }) {
           className="filter drop-shadow-md origin-center"
         />
         <span className="text-white text-[12px] font-semibold font-inter text-shadow-video mt-1">
-          {formatCount(video.likes)}
+          {formatCount(liveVideo.likes)}
         </span>
       </div>
 
@@ -133,7 +137,7 @@ export function ActionBar({ video, profile, onCommentClick }) {
           className="filter drop-shadow-md"
         />
         <span className="text-white text-[12px] font-semibold font-inter text-shadow-video mt-1">
-          {formatCount(video.comments)}
+          {formatCount(liveVideo.comments)}
         </span>
       </div>
 
@@ -146,7 +150,7 @@ export function ActionBar({ video, profile, onCommentClick }) {
           className="filter drop-shadow-md origin-center"
         />
         <span className="text-white text-[12px] font-semibold font-inter text-shadow-video mt-1">
-          {formatCount(video.bookmarks)}
+          {formatCount(liveVideo.bookmarks)}
         </span>
       </div>
 
@@ -159,7 +163,7 @@ export function ActionBar({ video, profile, onCommentClick }) {
           className="filter drop-shadow-md"
         />
         <span className="text-white text-[12px] font-semibold font-inter text-shadow-video mt-1">
-          {formatCount(video.shares)}
+          {formatCount(liveVideo.shares)}
         </span>
       </div>
 

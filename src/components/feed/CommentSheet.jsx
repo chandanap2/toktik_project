@@ -49,7 +49,7 @@ export function CommentSheet({ videoId, onClose }) {
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex flex-col justify-end bg-black/50 overflow-hidden pointer-events-auto transition-opacity duration-200"
+      className="fixed inset-0 z-[60] flex flex-col justify-end bg-black/50 overflow-hidden pointer-events-auto transition-opacity duration-200"
       onClick={handleClose}
       style={{ opacity: mounted ? 1 : 0 }}
     >
@@ -70,7 +70,7 @@ export function CommentSheet({ videoId, onClose }) {
         </div>
 
         {/* Comment List */}
-        <div className="flex-1 overflow-y-auto overscroll-contain px-4 py-2 pb-24">
+        <div className="flex-1 overflow-y-auto overscroll-contain px-4 py-2">
           {isLoading ? (
             <div className="space-y-4">
               {[1, 2, 3].map(i => (
@@ -119,7 +119,7 @@ export function CommentSheet({ videoId, onClose }) {
         {/* Input Area */}
         <form 
           onSubmit={handleSubmit}
-          className="absolute bottom-0 left-0 right-0 bg-white border-t border-toktik-border p-3 pb-safe flex items-center gap-3 w-full"
+          className="bg-white border-t border-toktik-border p-3 flex items-center gap-3 w-full shrink-0 z-10"
         >
           <Avatar 
              size={36} 

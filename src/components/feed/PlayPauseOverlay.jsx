@@ -25,9 +25,9 @@ export function PlayPauseOverlay({ isPlaying, show }) {
   if (!visible || isPlaying) return null
 
   return (
-    <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20">
       <div className="w-16 h-16 bg-black/40 backdrop-blur-sm rounded-full flex items-center justify-center animate-play-pause text-white">
-        <Play size={32} fill="white" className="ml-1.5" />
+        <Play size={32} fill="white" className="ml-1 translate-x-0.5" />
       </div>
     </div>
   )

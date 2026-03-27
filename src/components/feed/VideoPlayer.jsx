@@ -77,7 +77,7 @@ export const VideoPlayer = forwardRef(({ video, isActive }, ref) => {
       {/* Persistent global sound toggle mapped on top-right outside safe area logic conservatively */}
       <button 
         onClick={handleMuteClick}
-        className="absolute top-12 right-4 z-50 p-2 text-white bg-black/20 rounded-full backdrop-blur transition-opacity opacity-80 active:opacity-100"
+        className="absolute top-12 right-4 z-50 flex items-center justify-center w-10 h-10 text-white bg-black/20 rounded-full backdrop-blur transition-opacity opacity-80 active:opacity-100"
       >
         {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
       </button>
