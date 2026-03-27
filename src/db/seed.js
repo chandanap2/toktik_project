@@ -513,6 +513,9 @@ export async function seedDatabase() {
     console.log(`[TokTik] Seed complete: ${profiles.length} profiles, ${videos.length} videos, ${comments.length} comments`)
     console.log(`[TokTik] Active user set to: ${profiles[0].displayName} (${profiles[0].username})`)
     
+    // Dispatch event so the app can refresh state live without reload
+    window.dispatchEvent(new Event('toktik_seed_complete'))
+
     return true
   } catch (error) {
     console.error('[TokTik] Seed failed:', error)
